@@ -3,14 +3,13 @@ $.ajax({
     dataType: "json",
     jsonpCallback: "xkcddata",
     success: function (response) {
-        var num = response.num;
-        var x = Math.floor((Math.random() * response.num) + 1);
-        ajax2(x);
+        var num = Math.floor((Math.random() * response.num) + 1);
+        rendercomic(num);
     }
 })
-function ajax2(x) {
+function rendercomic(num) {
     $.ajax({
-        url: "http://dynamic.xkcd.com/api-0/jsonp/comic/" + x + "?callback=?",
+        url: "http://dynamic.xkcd.com/api-0/jsonp/comic/" + num + "?callback=?",
         dataType: "json",
         jsonpCallback: "xkcddata",
         success: function (data) {
